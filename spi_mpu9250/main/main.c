@@ -25,7 +25,7 @@
 #define READ_FLAG    0x80
 
 
-uint8_t mpu9265_read1byte(spi_device_handle_t spi, const uint8_t address){
+uint8_t mpu9250_read1byte(spi_device_handle_t spi, const uint8_t address){
     // １バイト読み込み
 
     esp_err_t ret;
@@ -47,10 +47,9 @@ uint8_t mpu9265_read1byte(spi_device_handle_t spi, const uint8_t address){
 }
 
 
-// Initialize MPU9265
-void mpu9265_init(spi_device_handle_t spi){
+void mpu9250_init(spi_device_handle_t spi){
     // Who AM I
-    uint8_t mpu_id = mpu9265_read1byte(spi, 0x75);
+    uint8_t mpu_id = mpu9250_read1byte(spi, 0x75);
 
     printf("MPU ID: %02X\n", mpu_id);
 }
@@ -81,5 +80,5 @@ void app_main()
     ret=spi_bus_add_device(HSPI_HOST, &devcfg, &spi);
     ESP_ERROR_CHECK(ret);
     //Initialize the LCD
-    mpu9265_init(spi);
+    mpu9250_init(spi);
 }

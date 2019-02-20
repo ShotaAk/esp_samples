@@ -22,9 +22,9 @@ GPATH
 .DS_Store
 
 # Example project files
-examples/**/sdkconfig
-examples/**/sdkconfig.old
-examples/**/build
+sdkconfig
+sdkconfig.old
+build
 
 # Doc build artifacts
 docs/*/_build/
@@ -72,5 +72,3 @@ test_multi_heap_host
 # Results for the checking of the Python coding style
 flake8_output.txt
 
-# ESP-IDF library 
-build

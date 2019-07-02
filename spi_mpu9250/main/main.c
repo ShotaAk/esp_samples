@@ -17,10 +17,10 @@
 #include "driver/gpio.h"
 
 
-#define PIN_NUM_MISO 12
-#define PIN_NUM_MOSI 13
-#define PIN_NUM_CLK  14
-#define PIN_NUM_CS   15
+#define GPIO_SPI_MISO 12
+#define GPIO_SPI_MOSI 13
+#define GPIO_SPI_CLK  14
+#define GPIO_SPI_CS   15
 
 #define READ_FLAG    0x80
 
@@ -60,9 +60,9 @@ void app_main()
     esp_err_t ret;
     spi_device_handle_t spi;
     spi_bus_config_t buscfg={
-        .miso_io_num=PIN_NUM_MISO,
-        .mosi_io_num=PIN_NUM_MOSI,
-        .sclk_io_num=PIN_NUM_CLK,
+        .miso_io_num=GPIO_SPI_MISO,
+        .mosi_io_num=GPIO_SPI_MOSI,
+        .sclk_io_num=GPIO_SPI_CLK,
         .quadwp_io_num=-1, // unused
         .quadhd_io_num=-1, // unused
         .max_transfer_sz=4 // bytes
@@ -70,7 +70,7 @@ void app_main()
     spi_device_interface_config_t devcfg={
         .clock_speed_hz=500*1000,   //Clock out at 500 kHz
         .mode=3,                    //SPI mode 3
-        .spics_io_num=PIN_NUM_CS,   //CS pin
+        .spics_io_num=GPIO_SPI_CS,   //CS pin
         .queue_size=7,              //We want to be able to queue 7 transactions at a time
     };
     //Initialize the SPI bus
